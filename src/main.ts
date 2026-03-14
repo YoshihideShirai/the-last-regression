@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-type EvidenceKey = "log" | "pr" | "spec" | "test";
+import { judgeOutcome, type EvidenceKey } from "./gameLogic";
 
 type Choice = {
   label: string;
@@ -312,11 +312,11 @@ class MysteryScene extends Phaser.Scene {
       b.label.disableInteractive();
     });
 
-    const hasCriticalEvidence = this.evidence.has("log") && this.evidence.has("pr") && this.evidence.has("spec");
-    if (ok && hasCriticalEvidence) {
+    const outcome = judgeOutcome({ suspectIsCorrect: ok, evidence: this.evidence });
+    if (outcome === "success") {
       this.ui.resultText.setColor("#40d99b");
       this.ui.resultText.setText(`論破成功！\n${reason}\n信頼度 ${this.trust} で真相に到達した。`);
-    } else if (ok) {
+    } else if (outcome === "warning") {
       this.ui.resultText.setColor("#ffd166");
       this.ui.resultText.setText("犯人は当てたが証拠不足。再現テストは通らず、チームは半信半疑だ。");
     } else {

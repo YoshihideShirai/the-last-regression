@@ -21,6 +21,20 @@ npm run dev
 npm run build
 ```
 
+## ユニットテスト
+
+```bash
+npm test
+```
+
+## CI
+
+GitHub Actions (`.github/workflows/ci.yml`) で、push / pull request 時に以下を実行します。
+
+- 依存関係インストール
+- ビルド
+- ユニットテスト
+
 ## ゲーム内容
 
 - 3チャプターの会話選択で情報を収集
