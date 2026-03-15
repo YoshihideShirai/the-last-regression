@@ -35,6 +35,11 @@ GitHub Actions (`.github/workflows/ci.yml`) で、push / pull request 時に以�
 - ビルド
 - ユニットテスト
 
+
+## ドキュメント
+
+- ゲームのストーリーとシステム仕様: `docs/game-design.md`
+
 ## ゲーム内容
 
 - 3チャプターの会話選択で情報を収集
